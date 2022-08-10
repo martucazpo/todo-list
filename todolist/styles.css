@@ -112,6 +112,10 @@
     font-weight: bold;
 }
 
+.edit-btn:hover {
+    background-color: gold;
+}
+
 .edit-task {
     width: 100%;
     display: flex;
