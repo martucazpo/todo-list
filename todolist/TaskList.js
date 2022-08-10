@@ -90,12 +90,7 @@ TaskList.prototype.unsetElements = function(){
 }
 TaskList.prototype.renderList = function(){
     this.elem.innerHTML = ""
-    let root = document.createElement("div")
-    root.innerHTML = ""
-    root.setAttribute("id", "root")
-    root.setAttribute("class", "wrapper")
-    this.elements.forEach(element => root.append(element))
-    this.elem.append(root)
+    this.elements.forEach(element => this.elem.append(element))
     this.unsetElements()
     return this
 }
@@ -139,7 +134,7 @@ TaskList.prototype.AddForm = function(){
         }]
     }
     let section = document.createElement("section")
-    section.setAttribute("class", "todo-section")
+    section.setAttribute("class", "add-section")
     section.append(this.Form(props))
     return section
 }
@@ -155,7 +150,7 @@ TaskList.prototype.List = function(){
             required: true
         }],
         btns:[{handleClick:this.handleDeleteTask,class:"delete-btn",btnTxt:"X"},
-            {handleClick:this.handleEditForm,class:"edit-btn",btnTxt:"EDIT"}]
+            {handleClick:this.handleEditForm,class:"edit-btn",btnTxt:"&#128393;"}]
     }
     let section = document.createElement("section")
     section.setAttribute("class", "list-section")
@@ -189,7 +184,7 @@ TaskList.prototype.Btn = function(props, value){
     button.addEventListener("click", ()=>props.handleClick(value))
     button.setAttribute("type", "button")
     button.setAttribute("class", props.class)
-    button.innerText = props.btnTxt
+    button.innerHTML = props.btnTxt
     return button
 }
 TaskList.prototype.render = function(){
